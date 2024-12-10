@@ -1,0 +1,27 @@
+<!-- lyrow.wxml -->
+<form catchsubmit="releaseNotice">
+<view class="shan">
+    <text class="testbt">我的信息</text>
+</view>
+<view class="xia">
+    <view class="xiaz">
+        <text class="testname">名字：</text>
+        <text class="testname">电话：</text>
+        <text class="testname">性别：</text>
+        <text class="testname">地址：</text>
+    </view>
+    <view class="xiay">
+        <input type="text" name="name" class="testsr" value="{{user.nickName}}"></input>
+        <input type="text" name="telephone" class="testsr" value="{{user.phone}}"></input>
+        <picker mode="selector" range="{{['男', '女']}}" bindchange="genderChange">
+            <view class="testsr">
+                {{gender}}
+            </view>
+        </picker> 
+        <input type="text" name="address" class="testsr" value="{{user.address}}"></input>
+    </view>
+</view>
+<view class="di">
+    <button class="tj" formType="submit">提交</button>
+</view>
+</form>

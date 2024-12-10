@@ -1,0 +1,34 @@
+<view id="lyrow">
+
+<view class="shan">
+  <view class="zho">
+    <!-- 放头像 -->
+    <image src="{{userInfo.avatarUrl}}" class="tx"></image> 
+    
+    <text class="name">{{user.username}}</text>
+    <text class="biaoqian" bindtap="goToDetail">编辑资料</text>
+  </view>
+</view>
+
+<view class="xia">
+  <view class="xiabiao">
+    <view class="jibenben">基本信息</view>
+    <text class="gxqm">真实姓名：{{user.nickName}}</text>
+    <text class="gxqm">性别：{{user.sex}}</text>
+    <text class="gxqm">电话：{{user.phone}}</text>
+    <text class="gxqm">地址：{{user.address}}</text>
+  </view>
+  <view class="xiabiao">
+    <view class="jibenben">我的信用分</view>
+    <image src="/pages/images/ts1.png" class="tushu"></image>
+    <image src="/pages/images/ts.png" class="tushu"></image>
+    <view class="wen">
+      <text class="sc">图书</text>
+      <text class="sctow">目前信用分为：{{user.bookstatus}}分</text>
+      <text class="sc">座位</text>
+      <text class="sctow">目前信用分为：{{user.seatstatus}}分</text>
+    </view>
+  </view>
+</view>
+
+</view>

@@ -1,0 +1,76 @@
+#lyrow .shan {
+  width: 100%;
+  height: 50px !important;
+  margin: 0 auto 0 auto;
+}
+
+#lyrow .zhu {
+  margin: 0 auto 0 auto;
+  width: 100%;
+  height: 75vh;
+  justify-content: flex-start;
+  display: flex !important;
+}
+
+#lyrow .zhuz {
+  width: 30%;
+  height: 80%;
+  border-bottom: rgba(110, 110, 110, 1) solid 2px !important;
+  flex-direction: column;
+  display: flex !important;
+}
+
+#lyrow .zhuy {
+  width: 59%;
+  height: 80%;
+  border-bottom: rgba(110, 110, 110, 1) solid 2px !important;
+  flex-direction: column;
+  display: flex !important;
+}
+
+#lyrow .tj {
+  justify-content: center;
+  display: flex !important;
+  height: 0;
+}
+
+#lyrow .an {
+  width: 124px !important;
+  height: 6vh;
+  position: relative;
+  bottom: 58px;
+  margin: 0 0 0 25px;
+  box-shadow: 0 0 5px 5px rgba(161, 161, 161, 0.63);
+  justify-content: center;
+  display: flex !important;
+  text-align: center;
+}
+
+#lyrow .test {
+  text-align: right;
+  margin: 20px 0 0 0;
+}
+
+#lyrow .zhuyy {
+  height: 80%;
+  width: 11%;
+  border-bottom: rgba(110, 110, 110, 1) solid 2px !important;
+}
+
+#lyrow .zcsr {
+  margin: 20px 0 0 0;
+  width: 80%;
+  box-shadow: 0 0 5px 3px rgba(161, 161, 161, 1);
+}
+
+#lyrow .bt {
+  text-indent: 13px;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+#lyrow .da {
+  margin: 14px auto 0 auto;
+  width: 90%;
+  box-shadow: 0 0 5px 5px rgba(161, 161, 161, 1);
+}

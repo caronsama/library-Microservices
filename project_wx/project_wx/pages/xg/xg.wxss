@@ -1,0 +1,148 @@
+/*--预设--*/
+body,
+#lyrow,
+#lyrow input,
+#lyrow textarea {
+  font-size: 12px;
+  font-family: 'Microsoft YaHei', '微软雅黑', MicrosoftJhengHei, '华文细黑', STHeiti, MingLiu;
+}
+
+#lyrow {
+  background: radial-gradient(#ffffff,#b1edff88,#cccccc67);
+  height: 110vh;
+  width: 100vw;
+}
+
+#lyrow div {
+  min-height: 18px;
+}
+
+#lyrow input,
+#lyrow textarea {
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+}
+
+#lyrow input:hover,
+#lyrow textarea:hover {
+  border: 1px solid #6bc1f2;
+}
+
+/*--编辑--*/
+#lyrow .shan {
+  background-image: url('https://ts1.cn.mm.bing.net/th/id/R-C.ab0f21c6aa0fc715d15f0910c6c01a22?rik=0qORqv3I1mD2iA&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f77%2f9877_6.jpg&ehk=RsuvqCfkkV%2fT9di9xvjlv15eCDgzJqwZIvQXis73Spc%3d&risl=&pid=ImgRaw&r=0');
+  width: 100%;
+  height: 24%;
+}
+
+#lyrow .xia {
+  width: 100%;
+  height: 100vh;
+}
+
+#lyrow .zho {
+  border-radius: 5px;
+  box-shadow: 0 0 5px 3px rgba(191, 191, 191, 1);
+  height: 89%;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 60%;
+}
+
+#lyrow .tx {
+  border-radius: 324px 324px 324px 324px;
+  height: 50%;
+  position: relative;
+  bottom: 24%;
+  margin: 0 40% 0 40%;
+  width: 64px !important;
+}
+
+#lyrow .name {
+  text-align: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 2em;
+    position: relative;
+    bottom: 17%;
+    flex-direction: column-reverse;
+    display: flex !important;
+}
+
+#lyrow .biaoqian {
+  width: 25%;
+  position: relative;
+  border-radius: 5px 5px 5px 5px;
+  background-color: rgba(255, 255, 255, 1);
+  height: 13%;
+  left: 37%;
+  bottom: 9px;
+  font-weight: 400;
+  font-size: 10px;
+  box-shadow: 0 0 5px 3px rgba(214, 214, 214, 1);
+  flex-direction: column;
+  display: flex !important;
+  text-align: center;
+}
+
+#lyrow .xiabiao {
+  border-radius: 15px;
+  box-shadow: 0 0 5px 3px rgba(209, 209, 209, 1);
+  margin: 0 auto 23px auto;
+  width: 90%;
+  height: 30%;
+  position: relative;
+  top: 100px;
+  background: rgb(248, 248, 248);
+  
+  
+}
+
+#lyrow .jibenben {
+  margin-left: 20px;
+  font-weight: bold;
+  padding: 15px 0;
+}
+
+#lyrow .gxqm {
+  padding: 0 0 10px 20px;
+  flex-direction: column;
+  display: flex !important;
+}
+
+#lyrow .tushu {
+  border-radius: 5px;
+  height: 25%;
+  width: 13%;
+  margin: 0 0 4% 6%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  flex-direction: column;
+  display: flex !important;
+  flex-direction: column;
+  display: flex !important;
+}
+
+#lyrow .sc {
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 2%;
+}
+
+#lyrow .wen {
+  position: relative;
+  left: 23%;
+  bottom: 62%;
+  height: 81px;
+}
+#lyrow .sctow {
+  font-size: 10px;
+  color: rgba(181, 177, 181, 1);
+  display: -webkit-box !important;
+  margin: 0 0 7% 0;
+}
+

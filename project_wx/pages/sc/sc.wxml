@@ -1,0 +1,35 @@
+<view class="form">
+  <form catchsubmit="releaseNotice">
+    <view style="display: flex;justify-content: center;align-items: center;">
+      <view class="search">
+        <input name="nr" style="color: grey;width:80%;" placeholder="  请输入想要搜索的书籍"></input>
+        <button formType="submit" style="width: 30px;">
+          <image class="buim" src="../images/ss.png"></image>
+        </button>
+      </view>
+    </view>
+
+    <!--设置搜索方式 -->
+    <view class="way">
+      <text class="xb">搜索方式：</text>
+      <radio-group name="way" style="display: inline; " bindchange="sayInfo">
+        <radio value="search2" checked>书名</radio>
+        <radio value="search3">作者</radio>
+        <radio value="search1">ISBN</radio>
+      </radio-group>
+    </view>
+  </form>
+</view>
+
+<view class="beii">
+  <view id="news-list" class="bei">
+    <view class='list-item' hover-class="list-item-class" wx:for="{{newsList}}" wx:for-item="news" wx:key="{{news.id}}" bindtap="goToDetail" data-kd='{{news}}'>
+      <image src='{{news.picture}}' style="height: 90px;margin-right: 15px;"></image>
+      <view class="news-title">
+        <text class="itemtext" bindtap="goToDetail" data-kd='{{news}}'> {{news.name}}  \n</text>
+        <text class="itemtext" bindtap="goToDetail" data-kd='{{news}}' style="font-size: 12px;background-color: rgba(218, 218, 218, 0.466);border-radius: 10px;padding: 2px;"> 作者: {{news.author}} \n</text>
+        <text class="itemtext" bindtap="goToDetail" data-kd='{{news}}' style="font-size: 12px; color: rgb(117, 117, 117);"> isbn： {{news.isbn}}</text>
+      </view>
+    </view>
+  </view>
+</view>

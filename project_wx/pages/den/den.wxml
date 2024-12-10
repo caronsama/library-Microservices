@@ -1,0 +1,13 @@
+<view class="lyrow">
+
+  <view class="add">
+    <text class="bb">欢迎使用</text>
+    <form catchsubmit="releaseNotice">
+      <input type="text" name="input1" class="sho" placeholder="请输入用户号" />
+      <input type="password" name="input2" class="ddddd sho" placeholder="请输入密码" />
+      <view class="zc"> <text bindtap="handleComponentClick2">点击注册</text></view> 
+      <button type="submit" name="button" class=" anan" formType="submit">登录</button>
+    </form>
+  </view>
+
+</view>

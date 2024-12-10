@@ -1,0 +1,45 @@
+<!--pages/studywork/studyword.wxml-->
+<view>
+
+<!-- 第一个框架-书的介绍 -->
+<view class="goodsItem" bindtap='play'>
+  <view class="right">
+    <view class="pic">
+      <image class="img" src="{{sgList[0].picture}}" style=" width: 90%;margin-top: 7%;"></image>
+    </view>
+    <view class="name" style="margin-top: 5%;">{{sgList[0].name}}</view>
+    <view class="category">{{sgList[0].author}}·著</view>
+    <view class="introduction">
+      <text>{{sgList[0].nr}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="Item2">
+  <view class="Item2_text">基本信息：</view>
+  <view class="goodsItem2">
+    <text class="zhus" decode="true">作者：{{sgList[0].author}} \n</text>
+    <text class="zhus" decode="true">ISBN：{{sgList[0].isbn}} \n</text>
+    <text class="zhus" decode="true">出版社：{{sgList[0].publisher}} \n</text>
+    <text class="zhus" decode="true">推荐售价：{{sgList[0].price}}￥ \n</text>
+    <text class="zhus" decode="true">剩余数量：{{sgList[0].booknum}} 本 \n</text>
+    <text class="zhus" decode="true">总借阅次数：{{sgList[0].borrownum}} 本 \n</text>
+  </view>
+</view>
+
+<view class="Item3">
+  <view class="Item2_text">简介：</view>
+  <view class="goodsItem2">
+    <!-- <text class="zhus" decode="true">{{sgList[0].com}}</text> -->
+    <text>暂无</text>
+  </view>
+</view>
+
+
+<view style="border-top:1rpx solid;">
+  <view class="btn">
+    <button wx:if='{{isAdd}}' plaiwn bindtap='cancleFavorites' style="width: 130px;">已借阅</button>
+    <button wx:else plain bindtap='addFavorites' style="width: 130px;">借阅</button>
+  </view>
+</view>
+</view>

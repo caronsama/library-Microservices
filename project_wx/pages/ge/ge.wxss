@@ -1,0 +1,203 @@
+/* pages/ge/ge.wxss */
+#zon {
+  height: 100vh;
+  background: radial-gradient(#ffffff,#b1edff88,#cccccc67);
+
+}
+
+#shan {
+  position: relative;
+  /*background:rgba(0, 217, 255, 0.836);*/
+  height: 35%;
+  overflow: hidden;
+  /* 隐藏超出容器的图片部分 */
+  display: flex;
+  flex-direction: column;
+}
+
+#myIcon {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.user-avatar {
+  margin-left: 85%;
+  /*将头像容器推到右侧 */
+  width: 50px;
+  /* 设置头像宽度 */
+  height: 50px;
+  /* 设置头像高度 */
+  border-radius: 50%;
+  /* 设置头像为圆形 */
+  margin-top: 2%;
+  /*设置头像高度*/
+  margin-left: 80%;
+  /* 将头像容器推到右侧 */
+
+}
+
+.user-name {
+  position: absolute;
+  margin-left: 60%;
+  /* 将头像容器推到右侧 */
+  padding: 5px;
+  /* 可选：添加内边距 */
+  font-size: 25px;
+  /* 设置字体大小 */
+  margin-top: 2%;
+}
+
+.avatar-container {
+
+  display: flex;
+  align-items: center;
+  /* 垂直居中头像和文本 */
+  margin-top: 0;
+  /* 可根据实际情况调整间距 */
+}
+
+.article {
+  position: absolute;
+  transform: rotate(3600deg);
+  white-space: nowrap;
+  writing-mode: vertical-lr;
+  /* 垂直从左到右 */
+  transform: translateX(10px) translateY(15px);
+  background-color: rgb(97, 145, 187)
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: translateY(-100px);
+  transform: scale(0.96);
+  /* 缩小图片到原来的50% */
+  transform-origin: top left;
+  /* 设置变换的原点 */
+  border-radius: 10px;
+  /* 圆角大小 */
+  object-fit: cover;
+  /* 图片覆盖容器并保持纵横比 */
+}
+
+.tt {
+
+  display: flex;
+  flex-direction: column;
+  background-image: url('https://ts1.cn.mm.bing.net/th/id/R-C.ab0f21c6aa0fc715d15f0910c6c01a22?rik=0qORqv3I1mD2iA&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f77%2f9877_6.jpg&ehk=RsuvqCfkkV%2fT9di9xvjlv15eCDgzJqwZIvQXis73Spc%3d&risl=&pid=ImgRaw&r=0');
+  height: 100%;
+  border-top-right-radius: 15px;
+  /* 设置右上角圆角 */
+  border-bottom-right-radius: 15px;
+  /* 设置右下角圆角 */
+  width: 97%;
+  box-shadow: 3px 5px 8px 0 rgb(129, 126, 87);
+  /* 设置边框宽度为2像素，样式为实线，颜色为黑色 */
+}
+
+.shan_xia {
+  display: flex;
+  /* 使用 Flex 布局 */
+  background: rgba(250, 250, 250, 0.836);
+  opacity: 0.4;
+  width: 98%;
+  height: 45%;
+  border-bottom-right-radius: 15px;
+  /* 设置右下角圆角 */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* padding: 0px; 底部组件内部的内边距，可根据实际需要调整 */
+
+
+}
+
+.shan_shan2 {
+  display: flex;
+  /* 使用 Flex 布局 */
+
+  opacity: 1;
+  width: 100%;
+  height: 35%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  font-size: 18px;
+  /* 设置字体大小 */
+}
+
+.box {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  /* 使用 Flex 布局 */
+  width: 20%;
+  /* 小盒子宽度 */
+  height: 120%;
+  /* 小盒子高度 */
+  margin-right: 3%;
+  /* 右侧间距 */
+
+  /* transform: translateX(0)  translateY(-70%); */
+
+}
+
+.vertical-line {
+  width: 3px;
+  height: 50%;
+  /* 卡片高度的三分之一 */
+  background-color: rgba(255, 255, 255, 0.849);
+  /* 纯白色 */
+  margin: auto 5px;
+  /* 请根据实际需要调整竖线的位置 */
+  transform: translateX(0) translateY(-25%);
+
+}
+
+.test {
+  padding-top: 10px;
+  text-align: center;
+  /* 文本居中 */
+
+
+}
+
+.shan_shan {
+  background: rgba(248, 46, 46, 0.836);
+  opacity: 0;
+  width: 100%;
+  height: 25%;
+}
+
+/*--预设--*/
+body, page {
+  padding: 0px;
+  margin: 0px;
+}
+
+.aaaaa {
+  margin: 15px 10px 0 10px;
+  height: 55px;
+  border-radius: 15px;
+  text-align: left;
+  text-indent: 15px;
+  font-size: 13px;
+  width: 90%;
+  box-shadow: 5px 5px 8px 0 rgba(207, 207, 207, 1);
+  align-items: center;
+  display: flex !important;
+  background: rgb(255, 255, 255);
+  /* 其他样式属性 */
+}
+.v{
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  right: 0;
+}

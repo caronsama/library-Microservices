@@ -1,0 +1,48 @@
+<view id="zon">
+  <view id='shan'>
+
+    <view class="tt">
+      <text class="article">借书证</text>
+      <!-- <text class="test">100分钟 </text> -->
+      <!-- <text>10册</text> -->
+
+      <text class="user-name">{{userName}}</text>
+      <image src="{{userInfo.avatarUrl}}" class="user-avatar"></image>
+      <view class="shan_xia">
+        <div class="box">
+          <text>借阅信誉</text>
+        </div>
+
+        <div class="box">
+          <text>阅读记录</text>
+        </div>
+
+        <div class="box">
+          <text>座位信誉</text>
+        </div>
+      </view>
+      <view class="shan_shan2">
+        <div class="box">
+          <text class="test">{{t1}}</text>
+        </div>
+        <view class="vertical-line"></view>
+        <div class="box">
+          <text class="test">{{t2}}</text>
+        </div>
+        <view class="vertical-line"></view>
+        <div class="box">
+          <text class="test">{{t3}}</text>
+        </div>
+      </view>
+    </view>
+    <!-- <view class="shan_shan"></view>调节下边容器高度 -->
+
+  </view>
+  <!-- 在微信小程序的 wxml 文件中 -->
+  <div class="v">
+    <view class="aaaaa" bindtap="handleComponentClick">修改资料</view>
+    <view class="aaaaa" bindtap="handleComponentClick2">信息中心</view>
+    <view class="aaaaa" bindtap="handleComponentClick3">修改密码</view>
+    <view class="aaaaa" bindtap="handleComponentClick4">退出账号</view>
+  </div>
+</view>

@@ -1,0 +1,59 @@
+<view wx:if="{{nodata}}">暂无订单</view>
+
+<view class="beii" wx:else>
+  <view wx:if="{{isaddtime}}" style="border-bottom: 1px solid rgba(255, 255, 255, 0.397);">
+  <view class="section">
+      <view class="picker">详细时间：</view>
+      <picker name="cs" bindchange="outout" value="{{index}}" range="{{array}}">
+        <view class="cs">
+          <view>
+            <view class="choose">{{array[index]}}</view>
+          </view>
+        </view>
+      </picker>
+      <view style="margin: 0 8px 0 10px;">-</view>
+      <picker name="cs" bindchange="outout2" value="{{index2}}" range="{{array2}}">
+        <view class="cs">
+          <view>
+            <view class="choose">{{array2[index2]}}</view>
+          </view>
+        </view>
+      </picker>
+      <view style="margin-left: 8px;">点</view>
+      <view class="qr" bindtap="addorderTime" >确认</view>
+    </view>
+</view>
+
+  <view id="news-list" class="bei">
+    <view style="margin-left: 10px;">正在使用订单</view>
+    <view style="font-size: 10px;margin-left: 3%;color: red;">(注意，请每两小时签一次到)</view>
+
+    <view class='list-item' hover-class="list-item-class" wx:for="{{nowList}}" wx:for-item="news" wx:key="{{index}}" style="box-shadow: -1px 5px 5px rgb(71, 71, 71)"> 
+      <view class="news-title" style="padding: 10px;">
+        <text class="itemtext" data-kd='{{news}}' style="font-weight: bolder;"> 订单号为： {{news.id}} \n</text>
+        <text class="itemtext" data-kd='{{news}}' style="font-size: 12px;"> 位置为： {{news.floor}}楼，{{news.num}}号桌 \n</text>
+        <text class="itemtext" data-kd='{{news}}' style="font-size: 12px;"> 使用时间： 星期{{news.day}} \n</text>
+      </view>
+        <button bindtap="addTime" data-id="{{news}}" style="border-radius: 0;border-right:1px solid #585858; box-shadow: -5px 5px 5px rgb(71, 71, 71);">续签</button>
+        <button bindtap="overorder" data-id="{{news}}" style="border-radius: 0;border-right:1px solid #585858; box-shadow: -5px 5px 5px rgb(71, 71, 71)">退签</button>
+        <button bindtap="addbu" data-id="{{news}}" style="box-shadow: -5px 5px 5px rgb(71, 71, 71)">加时</button>
+    </view>
+
+    <!-- <view class="add" hover-class="add-class" bindtap="addValue">查看更多</view> -->
+  </view>
+
+  <view id="news-list" class="bei">
+    <view style="margin-left: 10px;">新订单</view>
+    <view class='list-item' hover-class="list-item-class" wx:for="{{newsList}}" wx:for-item="news" wx:key="{{index}}">
+      <view class="news-title" style="padding: 10px;">
+        <text class="itemtext" data-kd='{{news}}' style="font-weight: bolder;"> 订单号为： {{news.id}} \n</text>
+        <text class="itemtext" data-kd='{{news}}' style="font-size: 12px;"> 位置为： {{news.floor}}楼，{{news.num}}号桌 \n</text>
+        <text class="itemtext" data-kd='{{news}}' style="font-size: 12px;"> 使用时间： {{news.shouldtime}} \n</text>
+        <text class="itemtext" data-kd='{{news}}' style="font-size: 12px;"> 使用区间：{{newsTime[index]}} \n</text>
+      </view>
+      <button bindtap="useorder" data-id="{{news.id}}" style="border-radius: 0; border-right: solid 1px #a1a1a1;">签到</button>
+      <button bindtap="canorder" data-id="{{news.id}}">取消订单</button>
+    </view>
+    <!-- <view class="add" hover-class="add-class" bindtap="addValue">查看更多 </view> -->
+  </view>
+</view>

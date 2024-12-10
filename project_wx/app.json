@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/den/den",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/seat/seat",
+    "pages/sc/sc",
+    "pages/detail/detail",
+    "pages/lendrecord/lendrecord",
+    "pages/check/check",
+    "pages/sellrecord/sellrecord",
+    "pages/ge/ge",
+    "pages/zc/zc",
+    "pages/xg/xg",
+    "pages/zhuc/zhuc",
+    "pages/chpass/chpass"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle":"dark"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/images/sy2.png",
+        "selectedIconPath": "pages/images/sy.png"
+      },
+      {
+        "pagePath": "pages/seat/seat",
+        "text": "座位预约",
+        "iconPath": "pages/images/dt2.png",
+        "selectedIconPath": "pages/images/dt.png"
+      },
+      {
+        "pagePath": "pages/ge/ge",
+        "text": "我的",
+        "iconPath": "pages/images/wd2.png",
+        "selectedIconPath": "pages/images/wd.png"
+      }
+    ]
+  }
+}
+

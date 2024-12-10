@@ -1,0 +1,21 @@
+<!-- lyrow.wxml -->
+<form catchsubmit="releaseNotice">
+<view class="shan">
+    <text class="testbt">修改密码</text>
+</view>
+<view class="xia">
+    <view class="xiaz">
+        <text class="testname">旧密码：</text>
+        <text class="testname">新密码：</text>
+        <text class="testname">确认密码：</text>
+    </view>
+    <view class="xiay">
+        <input type="text" name="old" class="testsr"></input>
+        <input type="text" name="new" class="testsr"></input>
+        <input type="text" name="again" class="testsr"></input>
+    </view>
+</view>
+<view class="di">
+    <button class="tj" formType="submit">提交</button>
+</view>
+</form>

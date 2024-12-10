@@ -1,0 +1,84 @@
+/* lyrow.wxss */
+
+/* 预设 */
+
+
+/* 编辑 */
+.shan {
+  margin: 10% auto 0 auto;
+  width: 90%;
+  height: 10%;
+}
+
+.xia {
+  margin: 0 auto 0 auto;
+  width: 90%;
+  flex-direction: row;
+  display: flex;
+  height: 80vh;
+  box-shadow: 0 0 5rpx 6rpx rgba(191, 191, 191, 1);
+}
+
+.xiaz {
+  width: 30%;
+  height: 80%;
+  flex-direction: column;
+  display: flex;
+  border-bottom: 2rpx solid rgba(181, 181, 181, 1);
+}
+
+.xiay {
+  width: 70%;
+  height: 80%;
+  flex-direction: column;
+  display: flex;
+  border-bottom: 2rpx solid rgba(181, 181, 181, 1);
+}
+
+.testname {
+  text-align: right;
+  margin: 36% 0 35.5% 0;
+  justify-content: center;
+  display: flex;
+}
+
+.testsr {
+  margin: 15% 0 15% 0;
+  flex-direction: column;
+  display: flex;
+  height: 6%;
+  box-shadow: 0 0 5rpx 5rpx rgba(212, 212, 212, 1);
+  width: 70%;
+}
+
+.xiax {
+  background-color: rgba(97, 64, 97, 1);
+  width: 17%;
+}
+
+.tj {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 30px;
+  bottom: 12vh;
+  position: relative;
+  /* bottom: -1px; */
+  border-radius: 5px;
+  box-shadow: 0 0 5rpx 5rpx rgba(204, 204, 204, 1);
+  font-size: 13px;
+}
+
+.di {
+  margin: 0 auto 0 auto;
+  width: 80px;
+  justify-content: center;
+  display: flex;
+}
+.testbt{
+  margin: 0 auto 0 auto;
+  font-weight: bolder;
+  text-indent: 20px;
+  position: relative;
+  bottom: 20px;
+}

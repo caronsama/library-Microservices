@@ -1,0 +1,114 @@
+// pages/den/den.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    username:"",
+    password:""
+  },
+
+  releaseNotice:function(res){
+    this.setData({
+      username:res.detail.value.input1,
+      password:res.detail.value.input2,
+    })
+    this.login()
+  },
+
+  login:function () {
+    var that = this
+    let url = "http://localhost:9090/wx/user/login"
+    wx.request({
+      url: url,
+      method:"POST",
+      data:{
+        "username": that.data.username,
+        "password": that.data.password
+      },
+      success:function (res) {
+        if(res.data.code==0){
+          console.log(res.data.data)
+          var app = getApp()
+          app.globalData.user = res.data.data
+
+          wx.switchTab({
+            url: '../index/index',
+          })
+        }else{
+          wx.showToast({
+            title: '账号或密码错误',
+            icon:"error"
+          })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      },
+    })
+
+  },
+
+  handleComponentClick2:function () {
+    wx.navigateTo({
+      url: '../zhuc/zhuc',
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
+  }
+})

@@ -1,0 +1,40 @@
+<form catchsubmit="releaseNotice">
+<view id="lyrow">
+  <view class="da">
+    <view class="shan">
+      <text class="bt">注册界面</text>
+    </view>
+    <view class="zhu">
+      <view class="zhuz">
+        <text class="test">用户名：</text>
+        <text class="test">姓名：</text>
+        <text class="test">密码：</text>
+        <text class="test">确认密码：</text>
+        <text class="test">性别：</text>
+        <!-- <text class="test">出生日期：</text> -->
+        <text class="test">手机号：</text>
+        <!-- <text class="test">验证码：</text> -->
+      </view>
+      <view class="zhuy">
+        <input type="text" name="username" class="zcsr" />
+        <input type="text" name="name" class="zcsr" />
+        <input type="text" name="password" class="zcsr" />
+        <input type="text" name="password2" class="zcsr" />
+        <picker mode="selector" range="{{['男', '女']}}" bindchange="genderChange">
+            <view class="zcsr">
+                {{gender}}
+            </view>
+        </picker> 
+        <input type="text" name="telephone" class="zcsr" />
+        <!-- <input type="text" name="input" class="zcsr" />
+        <input type="text" name="input" class="zcsr" /> -->
+      </view>
+      <view class="zhuyy"></view>
+    </view>
+    <view class="tj">
+      <button type="primary" name="button" class="an" formType="submit">点击注册</button>
+      <!-- <button type="primary" name="button" class="an" bindtap="handleComponentClick2">点击发送验证码</button> -->
+    </view>
+  </view>
+</view>
+</form>

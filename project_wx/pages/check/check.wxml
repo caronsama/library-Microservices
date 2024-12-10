@@ -1,0 +1,37 @@
+<view wx:if="{{isTrue}}">
+  <view style="background-color: white;margin: 5%;border-radius: 30px;">
+    <view class="tuan">
+      <image src="../images/check.png" style="width: 150px ;height: 150px;"></image>
+    </view>
+    <view class="tuan" wx:if="{{isChick}}" style="padding-bottom: 15%;padding-top: 2%;">恭喜，签到成功</view>
+    <view class="tuan" wx:else style="padding-bottom: 15%;padding-top: 2%;">恭喜，续签成功</view>
+  </view>
+
+  <!-- 按钮-->
+  <view style="display: flex; justify-content: center;">
+    <view class="button">
+      <!-- <button bindtap="renew" style="width: 50%;">退签</button>
+      <button bindtap="scanCode" style="width: 50%;border-radius: 0 30px 30px 0;">续签2小时</button> -->
+      座位号：{{seatid.arid}}
+    </view>
+  </view>
+</view>
+
+<veiw wx:else>
+  <view style="background-color: white;margin: 5%;border-radius: 30px;">
+    <view class="tuan">
+      <image src="../images/check2.png" style="width: 150px ;height: 150px;"></image>
+    </view>
+    <view class="tuan" wx:if="{{isChick}}" style="padding-bottom: 15%;padding-top: 2%;">签到失败</view>
+    <view class="tuan" wx:else style="padding-bottom: 15%;padding-top: 2%;">续签失败</view>
+  </view>
+
+  <!-- 按钮-->
+  <view style="display: flex; justify-content: center;">
+    <view class="button">
+      <!-- <button bindtap="renew" style="width: 50%;">退签</button>
+      <button bindtap="scanCode" style="width: 50%;border-radius: 0 30px 30px 0;">续签2小时</button> -->
+      座位号：{{seatid.arid}}
+    </view>
+  </view>
+</veiw>
