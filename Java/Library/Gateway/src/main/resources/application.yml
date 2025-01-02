@@ -11,7 +11,7 @@ logging:
 
 spring:
   application:
-    name: gateway
+    name: gateway-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/library_auth_micro?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
@@ -25,7 +25,7 @@ spring:
         - id: seat-service # 路由标示，必须唯一
           uri: lb://seatService # 路由的目标地址
           predicates: # 路由断言，判断请求是否符合规则
-            - Path=/seat/** # 路径断言，判断路径是否是以/user开头，如果是则符合
+            - Path=/seats/** # 路径断言，判断路径是否是以/user开头，如果是则符合
 #          局部路由 优先级 第二低
 #          filters:
 #            - AddRequestHeader=Truth,Itcast is freaking awesome!
@@ -33,6 +33,10 @@ spring:
           uri: lb://bookService
           predicates:
             - Path=/book/**
+        - id: gateway-service
+          uri: http://localhost:9090  # 如果是内嵌服务，可以直接使用本地地址
+          predicates:
+            - Path=/user/**  # 匹配路径 /user/**
 #      全局路由过滤器 优先级最低
 #      路由过滤器和defaultFilter的order由Spring指定，默认是按照声明顺序从1递增。
 #      default-filters:

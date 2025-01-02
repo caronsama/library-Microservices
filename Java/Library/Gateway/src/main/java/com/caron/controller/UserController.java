@@ -1,8 +1,13 @@
 package com.caron.controller;
 
 
+import com.caron.commom.Result;
+import com.caron.entity.User;
+import com.caron.service.Impl.UserServiceImpl;
+import com.caron.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +33,7 @@ public class UserController {
      * 用户登录
      * */
     @PostMapping("/login")
-    public Result<?> login(@RequestBody User user,HttpServletResponse response){
+    public Result<?> login(@RequestBody User user, HttpServletResponse response){
         //         ? Result.success(userServiceImpl.login(user)) : Result.error("-1","用户名或密码错误");
         // 1. 用户登录验证
         Result<?> login = userServiceImpl.login(user);
@@ -53,7 +58,6 @@ public class UserController {
     /*
      * 修改密码
      * */
-    @Token
     @PutMapping("/password")
     public  Result<?> update( @RequestBody User user,
                               @CookieValue(name = "token")String token,
@@ -76,7 +80,6 @@ public class UserController {
     /*
     * 修改用户信息
     * */
-    @Token
     @PutMapping("/modifyUser")
     public Result<?> modifyUser(@RequestBody User user,@CookieValue(name = "token")String token){
         return userServiceImpl.modifyUser(user);
@@ -85,7 +88,6 @@ public class UserController {
     /*
     * 批量删除用户
     * */
-    @Token
     @PostMapping("/deleteBatchUser")
     public  Result<?> deleteBatchUser(@RequestBody List<Integer> ids,@CookieValue(name = "token")String token){
         return userServiceImpl.deleteBatchUser(ids);
@@ -94,7 +96,6 @@ public class UserController {
     /*
     * 删除用户
     * */
-    @Token
     @DeleteMapping("/{id}")
     public Result<?> deleteUser(@PathVariable Long id,@CookieValue(name = "token")String token){
         return userServiceImpl.deleteUser(id);
@@ -103,7 +104,6 @@ public class UserController {
     /*
      * 分页查询用户
      * */
-    @Token
     @GetMapping("/findPageUser")
     public Result<?> findPageUser(@RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "10") Integer pageSize,
@@ -118,7 +118,6 @@ public class UserController {
     /*
     * 授权借书
     * */
-    @Token
     @PutMapping("/accreditBorrow/{id}")
     public Result<?> accreditBorrow(@PathVariable Long id,@CookieValue(name = "token")String token){
         return userServiceImpl.accreditBorrow(id);
@@ -127,7 +126,6 @@ public class UserController {
     /*
      * 取消授权借书
      * */
-    @Token
     @PutMapping("/NoBorrow/{id}")
     public Result<?> NoBorrow(@PathVariable Long id,@CookieValue(name = "token")String token){
         return userServiceImpl.NoBorrow(id);

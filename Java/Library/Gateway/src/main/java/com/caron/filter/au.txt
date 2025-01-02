@@ -1,0 +1,67 @@
+package com.example.demo.aop;
+
+import com.example.demo.commom.Result;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CookieValue;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
+import static com.example.demo.utils.TokenUtils.MyVerifyToken;
+
+
+@Component //将该类交给Spring管理
+@Aspect
+public class TokenAOP {
+
+
+    @Around("@annotation(com.example.demo.aop.Token)")
+    public Object verifyTokenAop(ProceedingJoinPoint proceedingJoinPoint){
+        // 获取方法参数值
+        Object[] args = proceedingJoinPoint.getArgs();
+        String tokenValue = null;
+
+        // 获取方法签名
+        MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
+        Method method = signature.getMethod();
+
+        // 获取方法参数上的注解
+        Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+
+        // 遍历参数和注解，找到带有@CookieValue("token")注解的参数
+        for (int i = 0; i < parameterAnnotations.length; i++) {
+            for (Annotation annotation : parameterAnnotations[i]) {
+                if (annotation instanceof CookieValue) {
+                    CookieValue cookieValueAnnotation = (CookieValue) annotation;
+                    if ("token".equals(cookieValueAnnotation.name())) {
+                        tokenValue = (String) args[i];
+                        // 核实token
+                        try {
+                            if (MyVerifyToken(tokenValue)){
+                                Object result;
+                                System.out.println("-----------------------------------------------------------------------");
+                                System.out.println("-------------------------token核对已经启动-----------------------------");
+                                System.out.println("-----------------------------------------------------------------------");
+                                try {
+                                    result = proceedingJoinPoint.proceed();
+                                } catch (Throwable e) {
+                                    throw new RuntimeException(e);
+                                }
+                                return result;
+                            }
+                        }catch (Exception e){
+                            return Result.error("-2","token过期或错误");
+                        }
+                    }
+                }
+            }
+        }
+        return Result.error("-2","token过期或错误");
+    }
+
+}

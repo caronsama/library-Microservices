@@ -19,20 +19,18 @@
         <spring-boot.version>2.6.13</spring-boot.version>
     </properties>
     <dependencies>
-
+        <!--    jwt    -->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
             <version>4.2.1</version>
         </dependency>
-
+        <!--   工具类     -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.10</version>
         </dependency>
-
-
         <!--网关gateway依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -45,19 +43,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!-- Jackson Core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <!-- Jackson Databind (用于对象与 JSON 的转换) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <!-- Jackson Annotations (用于注解支持，如 @JsonProperty) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.0</version>
+        </dependency>
     </dependencies>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
