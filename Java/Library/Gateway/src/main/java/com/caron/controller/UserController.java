@@ -6,11 +6,12 @@ import com.caron.entity.User;
 import com.caron.service.Impl.UserServiceImpl;
 import com.caron.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ServerWebExchange;
 
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
@@ -33,7 +34,7 @@ public class UserController {
      * 用户登录
      * */
     @PostMapping("/login")
-    public Result<?> login(@RequestBody User user, HttpServletResponse response){
+    public Result<?> login(@RequestBody User user, ServerWebExchange exchange){
         //         ? Result.success(userServiceImpl.login(user)) : Result.error("-1","用户名或密码错误");
         // 1. 用户登录验证
         Result<?> login = userServiceImpl.login(user);
@@ -43,13 +44,25 @@ public class UserController {
             // 2.2. 创建token
             String token = TokenUtils.genToken((User) login.getData());
             // 2.3. 将token放入cookie
-            Cookie cookie = new Cookie("token", token);
+            // Cookie cookie = new Cookie("token", token);
             // 2.4. 限制 Cookie 的作用域，使其只对指定域名下的页面生效
-            cookie.setDomain("");
+            // cookie.setDomain("");
             // 2.5. setPath("/") 是为了确保在整个应用程序的根路径下都可以访问这个 Cookie
-            cookie.setPath("/");
+            // cookie.setPath("/");
             // 2.6. 将cookie放入respond
-            response.addCookie(cookie);
+            // response.addCookie(cookie);
+            // 2.2. 使用 ResponseCookie 创建 Cookie
+            ResponseCookie cookie = ResponseCookie.from("token", token)
+                    .domain("")  // 设置 Cookie 的域名
+                    .path("/")  // 设置 Cookie 的作用路径
+//                    .httpOnly(true)  // 设置为 HttpOnly，防止 JavaScript 访问 Cookie
+//                    .secure(true)  // 在 HTTPS 上才会发送
+//                    .maxAge(3600)  // 设置 Cookie 过期时间（单位秒）
+                    .build();
+
+            // 2.3. 将 Cookie 添加到响应头
+            ServerHttpResponse response = exchange.getResponse();
+            response.getHeaders().add("Set-Cookie", cookie.toString());
             return login;
         }
         return login;
@@ -61,19 +74,31 @@ public class UserController {
     @PutMapping("/password")
     public  Result<?> update( @RequestBody User user,
                               @CookieValue(name = "token")String token,
-                              HttpServletResponse response){
+                              ServerWebExchange exchange){
         // 1. 修改密码
         Result<?> result = userServiceImpl.modifyPassword(Math.toIntExact(user.getId()), user.getPassword());
         // 2. 撤销token
         // 2.1. 创建一个同名的 Cookie，并将其 Max-Age 设置为 0，使其过期
-        Cookie cookie = new Cookie("token", null);
-        cookie.setMaxAge(0);
+        // Cookie cookie = new Cookie("token", null);
+        // cookie.setMaxAge(0);
         // 2.2. 限制 Cookie 的作用域，使其只对指定域名下的页面生效
-        cookie.setDomain("");
+        // cookie.setDomain("");
         // 2.3. setPath("/") 是为了确保在整个应用程序的根路径下都可以访问这个 Cookie
-        cookie.setPath("/");
+        // cookie.setPath("/");
         // 2.4. 将cookie放入respond
-        response.addCookie(cookie);
+        // response.addCookie(cookie);
+        ResponseCookie cookie = ResponseCookie.from("token", token)
+                .domain("")  // 设置 Cookie 的域名
+                .path("/")  // 设置 Cookie 的作用路径
+//                    .httpOnly(true)  // 设置为 HttpOnly，防止 JavaScript 访问 Cookie
+//                    .secure(true)  // 在 HTTPS 上才会发送
+//                    .maxAge(3600)  // 设置 Cookie 过期时间（单位秒）
+                .build();
+
+        // 2.3. 将 Cookie 添加到响应头
+        ServerHttpResponse response = exchange.getResponse();
+        response.getHeaders().add("Set-Cookie", cookie.toString());
+
         return result;
     }
 
