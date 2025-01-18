@@ -40,6 +40,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         String path = exchange.getRequest().getURI().getPath();
         // 0.1.如果请求路径是 /user/login 或 /user/register，跳过校验
         if ("/user/login".equals(path) || "/user/register".equals(path)) {
+            System.err.println("----------------------跳过校验----------------------------------");
             return chain.filter(exchange); // 跳过校验，继续执行后续过滤器
         }
 
@@ -53,6 +54,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             try {
                 if (MyVerifyToken(verifyToken)){
                     // 2.1.是，放行
+                    System.err.println("----------------------验证成功----------------------------------");
                     return chain.filter(exchange);
                 }else {
                     // 2.2.否，拦截
@@ -72,6 +74,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
                     // 设置响应状态码
                     response.setStatusCode(HttpStatus.UNAUTHORIZED);
                     // 写入响应体
+                    System.err.println("----------------------验证失败----------------------------------");
                     return response.writeWith(Mono.just(response.bufferFactory().wrap(errorMessage.getBytes())));
                 }
             }catch (Exception e){
@@ -91,6 +94,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
                 // 设置响应状态码
                 response.setStatusCode(HttpStatus.UNAUTHORIZED);
                 // 写入响应体
+                System.err.println("----------------------异常错误----------------------------------");
                 return response.writeWith(Mono.just(response.bufferFactory().wrap(errorMessage.getBytes())));
             }
         } else {
@@ -111,6 +115,7 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
             // 设置响应状态码
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             // 写入响应体
+            System.err.println("----------------------不包含token----------------------------------");
             return response.writeWith(Mono.just(response.bufferFactory().wrap(errorMessage.getBytes())));
         }
     }

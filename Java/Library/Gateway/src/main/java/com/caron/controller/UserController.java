@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/local/user")
 public class UserController {
 
     @Autowired
@@ -73,7 +73,6 @@ public class UserController {
      * */
     @PutMapping("/password")
     public  Result<?> update( @RequestBody User user,
-                              @CookieValue(name = "token")String token,
                               ServerWebExchange exchange){
         // 1. 修改密码
         Result<?> result = userServiceImpl.modifyPassword(Math.toIntExact(user.getId()), user.getPassword());
@@ -87,7 +86,7 @@ public class UserController {
         // cookie.setPath("/");
         // 2.4. 将cookie放入respond
         // response.addCookie(cookie);
-        ResponseCookie cookie = ResponseCookie.from("token", token)
+        ResponseCookie cookie = ResponseCookie.from("token", null)
                 .domain("")  // 设置 Cookie 的域名
                 .path("/")  // 设置 Cookie 的作用路径
 //                    .httpOnly(true)  // 设置为 HttpOnly，防止 JavaScript 访问 Cookie
@@ -106,7 +105,7 @@ public class UserController {
     * 修改用户信息
     * */
     @PutMapping("/modifyUser")
-    public Result<?> modifyUser(@RequestBody User user,@CookieValue(name = "token")String token){
+    public Result<?> modifyUser(@RequestBody User user){
         return userServiceImpl.modifyUser(user);
     }
 
@@ -114,7 +113,7 @@ public class UserController {
     * 批量删除用户
     * */
     @PostMapping("/deleteBatchUser")
-    public  Result<?> deleteBatchUser(@RequestBody List<Integer> ids,@CookieValue(name = "token")String token){
+    public  Result<?> deleteBatchUser(@RequestBody List<Integer> ids){
         return userServiceImpl.deleteBatchUser(ids);
     }
 
@@ -122,7 +121,7 @@ public class UserController {
     * 删除用户
     * */
     @DeleteMapping("/{id}")
-    public Result<?> deleteUser(@PathVariable Long id,@CookieValue(name = "token")String token){
+    public Result<?> deleteUser(@PathVariable Long id){
         return userServiceImpl.deleteUser(id);
     }
 
@@ -136,7 +135,7 @@ public class UserController {
                                @RequestParam(defaultValue = "") String search2,
                                @RequestParam(defaultValue = "") String search3,
                                @RequestParam(defaultValue = "") String search4
-                                ,@CookieValue(name = "token")String token){
+                                ){
         return userServiceImpl.findPageUser(pageNum, pageSize, search1, search2, search3, search4);
     }
 
@@ -144,7 +143,7 @@ public class UserController {
     * 授权借书
     * */
     @PutMapping("/accreditBorrow/{id}")
-    public Result<?> accreditBorrow(@PathVariable Long id,@CookieValue(name = "token")String token){
+    public Result<?> accreditBorrow(@PathVariable Long id){
         return userServiceImpl.accreditBorrow(id);
     }
 
@@ -152,7 +151,7 @@ public class UserController {
      * 取消授权借书
      * */
     @PutMapping("/NoBorrow/{id}")
-    public Result<?> NoBorrow(@PathVariable Long id,@CookieValue(name = "token")String token){
+    public Result<?> NoBorrow(@PathVariable Long id){
         return userServiceImpl.NoBorrow(id);
     }
 

@@ -6,15 +6,18 @@ logging:
     com:
       baomidou:
         mybatisplus: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: DEBUG
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
+
 spring:
   application:
-    name: gateway-service
+    name: gatewayService
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/library_auth_micro?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    url: jdbc:mysql://localhost:3306/library_auth_micro?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8&useSSL=false&allowPublicKeyRetrieval=true
     username: caron
     password: 12130519
   cloud:
@@ -23,7 +26,7 @@ spring:
     gateway:
       routes:
         - id: seat-service # 路由标示，必须唯一
-          uri: lb://seatService # 路由的目标地址
+          uri: lb://seatService # 路由的目标地址,这里的路由地址必须要和 application.name 一致
           predicates: # 路由断言，判断请求是否符合规则
             - Path=/seats/** # 路径断言，判断路径是否是以/user开头，如果是则符合
 #          局部路由 优先级 第二低
@@ -32,11 +35,14 @@ spring:
         - id: book-service
           uri: lb://bookService
           predicates:
-            - Path=/book/**
+            - Path=/book/**,/lendRecord/**,/photo/**
         - id: gateway-service
           uri: http://localhost:9090  # 如果是内嵌服务，可以直接使用本地地址
           predicates:
-            - Path=/user/**  # 匹配路径 /user/**
+            - Path=/user/**,/dashboard/**  # 匹配路径 /user/**
+          filters:
+            - RewritePath=/user/(?<remaining>.*),/local/user/${remaining}
+            - RewritePath=/dashboard/(?<remaining>.*),/local/dashboard/${remaining}   # 当controller跟predicates相同时，会优先路由controller
 #      全局路由过滤器 优先级最低
 #      路由过滤器和defaultFilter的order由Spring指定，默认是按照声明顺序从1递增。
 #      default-filters:
@@ -53,3 +59,5 @@ mybatis-plus:
       logic-delete-field: delete
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+
