@@ -1,0 +1,6 @@
+问题：
+1. gateway网关 /dashboard/** 没有经过全局过滤器 http://localhost:9090/dashboard/user?uid=3        解决，当controller跟predicates相同时，会优先路由controller
+
+2. gateway网关 /dashboard/** 不携带cookie会出现400状态码错误    解决，忘记删除@Cookie导致
+
+3. 图片资源通过cookie但无法在对应的服务中找到     解决，spring.web.resources.static-locations 是 Spring Boot 2.4.0 之后的配置项，如果你使用的 Spring Boot 版本低于 2.4.0，则需要使用旧的配置项 spring.resources.static-locations
