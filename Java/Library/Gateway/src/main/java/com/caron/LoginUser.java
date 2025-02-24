@@ -13,4 +13,8 @@ public class LoginUser {
     public static int getVisitCount() {
         return visitCount.get();
     }
+
+    public static void setZero() {
+        visitCount.set(0);
+    }
 }

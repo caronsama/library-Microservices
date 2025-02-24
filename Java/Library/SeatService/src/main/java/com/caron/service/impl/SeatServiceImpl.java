@@ -98,6 +98,12 @@ public class SeatServiceImpl implements SeatService {
         // 1. 判断是否到入座时间
         // 1.1. 查询订单
         SeatSell seatSell = seatSellMapper.selectById(id);
+
+/*        // 判断订单是否已被释放
+        if (seatSell.getStatus() != 1){
+            return Result.error("-1", "该订单已被释放");
+        }*/
+
         // 1.2. 判断是否到时间签到
         if (seatSell.getShouldtime().compareTo(new Date()) > 0){
             return Result.error("-1", "您的签到时间尚未开始");
