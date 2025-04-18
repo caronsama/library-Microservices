@@ -7,11 +7,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.caron.commom.Result;
 import com.caron.dao.SeatMapper;
 import com.caron.dao.SeatSellMapper;
+import com.caron.delayTask.DelayTask;
 import com.caron.entity.Seat;
 import com.caron.entity.SeatSell;
 import com.caron.entity.User;
 import com.caron.feign.UserClient;
 import com.caron.service.SeatService;
+import com.caron.util.RedisSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,6 +78,9 @@ public class SeatServiceImpl implements SeatService {
         // 2.6 提交订位
         seat.setTime(seatTime.toString());
         seatMapper.updateById(seat);
+        // 2.7 提交延时任务
+        DelayTask.addOrder(RedisSingleton.getInstance(), seatSell.getId().toString(), seatSell.getId().toString(),
+                (int)(seatSell.getShouldtime().toInstant().getEpochSecond() - new Date().toInstant().getEpochSecond() + 60*30));
         // 3. 生成订单
         // 3.1. 填充订单其他信息
         seatSell.setNum(seat.getNum());
@@ -98,12 +103,12 @@ public class SeatServiceImpl implements SeatService {
         // 1. 判断是否到入座时间
         // 1.1. 查询订单
         SeatSell seatSell = seatSellMapper.selectById(id);
-
-/*        // 判断订单是否已被释放
+        // 判断订单是否已被释放
         if (seatSell.getStatus() != 1){
             return Result.error("-1", "该订单已被释放");
-        }*/
-
+        }
+        // 删除延时任务
+        DelayTask.deleteOrder(RedisSingleton.getInstance(), seatSell.getId().toString());
         // 1.2. 判断是否到时间签到
         if (seatSell.getShouldtime().compareTo(new Date()) > 0){
             return Result.error("-1", "您的签到时间尚未开始");
@@ -519,11 +524,11 @@ public class SeatServiceImpl implements SeatService {
         if(isLast < 0){
             // 1.3. 应该就坐 是 shouldTime
             // 2. 判断 应该就坐 的时间是否超过30分钟
-            return (now.getTime() - shouldTime.getTime()) / (60 * 1000) > 30;
+            return (now.getTime() - shouldTime.getTime()) / (60 * 1000) > 29;
         }else{
             // 1.3. 应该就坐 是 subscribeTime
             // 2. 判断 应该就坐 的时间是否超过30分钟
-            return (now.getTime() - subscribeTime.getTime()) / (60 * 1000) > 30;
+            return (now.getTime() - subscribeTime.getTime()) / (60 * 1000) > 29;
         }
     }
 
